@@ -761,7 +761,7 @@ public class AnalysisService {
 			
 			}
 		}else {
-			return directData(Global.apptoken, video.getOriginaladdress(),"local")
+			return directData(Global.apptoken, video.getOriginaladdress(),"local");
 		}
 		return null;
 	}
