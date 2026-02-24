@@ -47,6 +47,7 @@ public interface GraphicContentDao extends JpaRepository<GraphicContentEntity, I
 	
 	@Query(value = "SELECT * FROM biz_graphic_content WHERE platform = :platform ORDER BY RANDOM() LIMIT 1", nativeQuery = true)
 	GraphicContentEntity findRandomByPlatform(@Param("platform") String platform);
-
-
+	
+	@Query(value = "SELECT * FROM biz_graphic_content ORDER BY id DESC LIMIT 3", nativeQuery = true)
+	List<GraphicContentEntity> findRecentlyAdded();
 }

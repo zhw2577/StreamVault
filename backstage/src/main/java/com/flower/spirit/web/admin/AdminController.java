@@ -538,6 +538,18 @@ public class AdminController {
 	}
 	
 	
+	/**
+	 * 最新入库
+	 * @return
+	 */
+	@GetMapping(value = "/recentlyAdded")
+	public AjaxEntity recentlyAdded() {
+		Map<String, Object> result = new HashMap<>();
+		result.put("graphicContent", graphicContentService.findRecentlyAdded());
+		result.put("videoData", videoDataService.findRecentlyAdded());
+		return new AjaxEntity(Global.ajax_success, "数据获取成功", result);
+	}
+	
 //	@ResponseBody
 //	@GetMapping("/playStream")
 //	public Map<String, Object> playStream(@RequestParam String videoid,@RequestParam(defaultValue = "720p") String quality) throws Exception {

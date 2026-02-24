@@ -448,6 +448,227 @@
         #metricsContainer{
         	margin-bottom: 1rem;
         }
+        
+        /* 最近入库样式 */
+        .recently-added-section {
+            margin-top: 2rem;
+        }
+        
+        .recently-added-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--gray-900);
+            margin-bottom: 1rem;
+            padding-left: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .recently-added-title i {
+            color: var(--primary-color);
+        }
+        
+        .recently-card {
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            transition: var(--transition);
+            height: 100%;
+        }
+        
+        .recently-card:hover {
+            border-color: var(--primary-color);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .recently-card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid var(--gray-200);
+        }
+        
+        .recently-card-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--gray-900);
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .recently-card-title i {
+            font-size: 1.25rem;
+        }
+        
+        .recently-card-title.graphic i {
+            color: var(--info-color);
+        }
+        
+        .recently-card-title.video i {
+            color: var(--success-color);
+        }
+        
+        .recently-item {
+            display: flex;
+            gap: 0.75rem;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--gray-100);
+            transition: var(--transition);
+        }
+        
+        .recently-item:last-child {
+            border-bottom: none;
+        }
+        
+        .recently-item:hover {
+            background: var(--gray-50);
+            margin: 0 -0.75rem;
+            padding: 0.75rem;
+            border-radius: 6px;
+        }
+        
+        .recently-thumbnail {
+            width: 80px;
+            height: 80px;
+            border-radius: 8px;
+            overflow: hidden;
+            flex-shrink: 0;
+            position: relative;
+            background: var(--gray-100);
+        }
+        
+        .recently-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .recently-thumbnail.video-indicator::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 24px;
+            height: 24px;
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .recently-thumbnail.video-indicator::before {
+            content: '▶';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 10px;
+            z-index: 1;
+        }
+        
+        .recently-info {
+            flex: 1;
+            min-width: 0;
+        }
+        
+        .recently-title {
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: var(--gray-900);
+            margin: 0 0 0.25rem 0;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        
+        .recently-desc {
+            font-size: 1.1rem;
+            color: var(--gray-500);
+            margin: 0 0 0.5rem 0;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        
+        .recently-meta {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1rem;
+            color: var(--gray-400);
+        }
+        
+        .recently-platform {
+            display: inline-flex;
+            align-items: center;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--white);
+        }
+        
+        /* 图文多图堆叠效果 */
+        .recently-thumbnail.stacked {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+        
+        .recently-thumbnail.stacked img {
+            border-radius: 4px;
+        }
+        
+        .recently-thumbnail.stacked img:first-child {
+            border-radius: 6px 6px 4px 4px;
+        }
+        
+        .recently-thumbnail.stacked img:last-child {
+            border-radius: 4px 4px 6px 6px;
+        }
+        
+        .recently-thumbnail.stacked img:only-child {
+            border-radius: 6px;
+        }
+        
+        .recently-thumbnail.stacked .image-count {
+            position: absolute;
+            top: 4px;
+            right: 4px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.65rem;
+            font-weight: 600;
+            z-index: 2;
+        }
+        
+        .recently-empty {
+            text-align: center;
+            padding: 2rem;
+            color: var(--gray-400);
+        }
+        
+        .recently-empty i {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            opacity: 0.5;
+        }
+        
+        .recently-empty p {
+            margin: 0;
+            font-size: 0.875rem;
+        }
     </style>
 </head>
 <body>
@@ -532,6 +753,50 @@
                     <!-- 平台统计详情 -->
                     <div class="row" id="platformsContainer" style="display: none;">
                         <!-- 平台统计卡片将在这里动态生成 -->
+                    </div>
+                    
+                    <!-- 最近入库 -->
+                    <div class="row recently-added-section" id="recentlyAddedSection" style="display: none;">
+                        <div class="col-12">
+                            <div class="recently-added-title">
+                                <i class="mdi mdi-clock-fast"></i>
+                                最近入库
+                            </div>
+                        </div>
+                       <!-- 视频最近入库 -->
+                        <div class="col-lg-6 col-md-12 mb-4">
+                            <div class="recently-card">
+                                <div class="recently-card-header">
+                                    <h3 class="recently-card-title video">
+                                        <i class="mdi mdi-video"></i>
+                                        视频内容
+                                    </h3>
+                                    <a href="/admin/videoDataList" class="btn btn-sm btn-outline-primary">
+                                        查看全部
+                                    </a>
+                                </div>
+                                <div id="recentlyVideoList">
+                                    <!-- 动态生成 -->
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 图文最近入库 -->
+                        <div class="col-lg-6 col-md-12 mb-4">
+                            <div class="recently-card">
+                                <div class="recently-card-header">
+                                    <h3 class="recently-card-title graphic">
+                                        <i class="mdi mdi-image-multiple"></i>
+                                        图文内容
+                                    </h3>
+                                    <a href="/admin/graphicContentList" class="btn btn-sm btn-outline-primary">
+                                        查看全部
+                                    </a>
+                                </div>
+                                <div id="recentlyGraphicList">
+                                    <!-- 动态生成 -->
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </main>
@@ -842,6 +1107,9 @@
             setTimeout(() => {
                 $('.platform-card').addClass('slide-up');
             }, 400);
+            
+            // 加载最近入库数据
+            loadRecentlyAdded();
         }
         
         // 删除createTotalCard函数，因为现在使用固定的主要指标卡片
@@ -986,6 +1254,169 @@
                 refreshStatistics();
             });
         });
+        
+        /**
+         * 加载最近入库数据
+         */
+        function loadRecentlyAdded() {
+            $.ajax({
+                url: '/admin/api/recentlyAdded',
+                type: 'GET',
+                dataType: 'json',
+                timeout: 10000,
+                cache: false,
+                success: function(response) {
+                    if (response && response.resCode === '000001' && response.record) {
+                        renderRecentlyAdded(response.record);
+                        $('#recentlyAddedSection').fadeIn(500);
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.warn('加载最近入库数据失败:', error);
+                }
+            });
+        }
+        
+        /**
+         * 渲染最近入库数据
+         * @param {Object} data - 包含graphicContent和videoData的数据对象
+         */
+        function renderRecentlyAdded(data) {
+            // 渲染图文最近入库
+            const graphicList = data.graphicContent || [];
+            const graphicContainer = $('#recentlyGraphicList');
+            
+            if (graphicList.length > 0) {
+                let graphicHtml = '';
+                graphicList.forEach(item => {
+                    graphicHtml += createGraphicRecentlyItem(item);
+                });
+                graphicContainer.html(graphicHtml);
+            } else {
+                graphicContainer.html(`
+                    <div class="recently-empty">
+                        <i class="mdi mdi-image-off"></i>
+                        <p>暂无图文数据</p>
+                    </div>
+                `);
+            }
+            
+            // 渲染视频最近入库
+            const videoList = data.videoData || [];
+            const videoContainer = $('#recentlyVideoList');
+            
+            if (videoList.length > 0) {
+                let videoHtml = '';
+                videoList.forEach(item => {
+                    videoHtml += createVideoRecentlyItem(item);
+                });
+                videoContainer.html(videoHtml);
+            } else {
+                videoContainer.html(`
+                    <div class="recently-empty">
+                        <i class="mdi mdi-video-off"></i>
+                        <p>暂无视频数据</p>
+                    </div>
+                `);
+            }
+        }
+        
+        /**
+         * 创建图文最近入库项
+         * @param {Object} item - 图文数据项
+         * @returns {string} HTML字符串
+         */
+        function createGraphicRecentlyItem(item) {
+            const title = item.title || '无标题';
+            const content = item.content || '';
+            const author = item.author || '未知作者';
+            const platform = item.platform || '未知平台';
+            const badgeClass = getPlatformBadgeClass(platform);
+            
+            // 解析图片
+            let images = [];
+            try {
+                if (item.images) {
+                    images = JSON.parse(item.images);
+                }
+            } catch (e) {
+                console.error('解析图片失败:', e);
+            }
+            
+            // 生成缩略图HTML
+            let thumbnailHtml = '';
+            if (images.length > 0) {
+                const displayImages = images.slice(0, 3);
+                thumbnailHtml = `<div class="recently-thumbnail stacked">`;
+                displayImages.forEach((img, index) => {
+                    thumbnailHtml += `<img src="${img}" alt="图片${index + 1}">`;
+                });
+                if (images.length > 3) {
+                    thumbnailHtml += `<span class="image-count">${images.length}</span>`;
+                }
+                thumbnailHtml += `</div>`;
+            } else {
+                thumbnailHtml = `<div class="recently-thumbnail"><i class="mdi mdi-image" style="font-size: 2rem; color: var(--gray-300);"></i></div>`;
+            }
+            
+            // 格式化时间
+            const createTime = item.createtime ? new Date(item.createtime).toLocaleDateString() : '未知时间';
+            
+            return `
+                <div class="recently-item">
+                    ${thumbnailHtml}
+                    <div class="recently-info">
+                        <h4 class="recently-title" title="${title}">${title}</h4>
+                        <p class="recently-desc" title="${content}">${content}</p>
+                        <div class="recently-meta">
+                            <span class="recently-platform ${badgeClass}">${platform}</span>
+                            <span>${author}</span>
+                            <span>${createTime}</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+        
+        /**
+         * 创建视频最近入库项
+         * @param {Object} item - 视频数据项
+         * @returns {string} HTML字符串
+         */
+        function createVideoRecentlyItem(item) {
+            const title = item.videoname || '无标题';
+            const desc = item.videodesc || '';
+            const author = item.videoauthor || '未知作者';
+            const platform = item.videoplatform || '未知平台';
+            const badgeClass = getPlatformBadgeClass(platform);
+            const cover = item.videocover || '';
+            
+            // 生成缩略图HTML
+            let thumbnailHtml = '';
+            if (cover) {
+                thumbnailHtml = `<div class="recently-thumbnail video-indicator"><img src="${cover}" alt="${title}"></div>`;
+            } else {
+                thumbnailHtml = `<div class="recently-thumbnail video-indicator"><i class="mdi mdi-video" style="font-size: 2rem; color: var(--gray-300);"></i></div>`;
+            }
+            
+            // 格式化时间
+            const createTime = item.createtime ? new Date(item.createtime).toLocaleDateString() : '未知时间';
+            
+            return `
+                <div class="recently-item">
+                    ${thumbnailHtml}
+                    <div class="recently-info">
+                        <h4 class="recently-title" title="${title}">${title}</h4>
+                        <p class="recently-desc" title="${desc}">${desc}</p>
+                        <div class="recently-meta">
+                            <span class="recently-platform ${badgeClass}">${platform}</span>
+                            <span>${author}</span>
+                            <span>${createTime}</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
     </script>
 </body>
 </html>

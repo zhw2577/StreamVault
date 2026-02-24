@@ -289,5 +289,17 @@ public class VideoDataService {
 	public VideoDataEntity findRandomByVideoplatform(String platform) {
 		return videoDataDao.findRandomByVideoplatform(platform);
 	}
+	
+	public VideoDataEntity findById(String videoid) {
+		 Optional<VideoDataEntity> findById = videoDataDao.findById(Integer.valueOf(videoid));
+		 if(findById.isPresent()) {
+			 return findById.get();
+		 }
+		 return null;
+	}
+	
+	public List<VideoDataEntity> findRecentlyAdded() {
+		return videoDataDao.findRecentlyAdded();
+	}
 
 }

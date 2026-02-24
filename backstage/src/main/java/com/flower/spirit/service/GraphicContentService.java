@@ -119,4 +119,7 @@ public class GraphicContentService {
 		return graphicContentDao.findRandomByPlatform(platform);
 	}
 	
+	public List<GraphicContentEntity> findRecentlyAdded() {
+		return graphicContentDao.findRecentlyAdded();
+	}
 }

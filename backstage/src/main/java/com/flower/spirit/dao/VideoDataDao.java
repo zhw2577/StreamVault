@@ -43,5 +43,7 @@ public interface VideoDataDao
 	
 	@Query(value = "SELECT * FROM biz_video WHERE videoplatform = :videoplatform ORDER BY RANDOM() LIMIT 1", nativeQuery = true)
 	VideoDataEntity findRandomByVideoplatform(@Param("videoplatform") String videoplatform);
-
+	
+	@Query(value = "SELECT * FROM biz_video WHERE (videoprivacy IS NULL OR videoprivacy = '' OR videoprivacy != '1') ORDER BY id DESC LIMIT 3", nativeQuery = true)
+	List<VideoDataEntity> findRecentlyAdded();
 }
