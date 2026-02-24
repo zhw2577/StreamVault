@@ -255,6 +255,13 @@
                                         </select>
                                     </div>
                                     <div class="form-group">
+                                        <label>多CDN排序(upos>cn>mcdn>other)</label>
+                                        <select class="cdnsort form-control" name="cdnsort">
+                                            <option value="0"  th:selected="${bili.cdnsort} eq '0'">否</option>
+                                            <option value="1"  th:selected="${bili.cdnsort} eq '1'">是</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
                                         <button class="btn btn-primary saveBiliConfig" type="button">保存</button>
                                     </div>
                                 </form>
@@ -742,6 +749,7 @@
             var bitstream = $('.bitstream').val();
             var oddmm = $('.oddmm').val();
             var collectdmm = $('.collectdmm').val();
+            var cdnsort = $('.cdnsort').val();
             var option = {};
             option['id'] = appid;
             option['bilicookies'] = bilicookies;
@@ -749,6 +757,7 @@
             option['bitstream'] = bitstream;
             option['oddmm'] = oddmm;
             option['collectdmm'] = collectdmm;
+            option['cdnsort'] = cdnsort;
             $.post("/admin/api/updateBiliConfig",option,function(data,status){
                 if(data.resCode =="000001"){
                     layer.closeAll();

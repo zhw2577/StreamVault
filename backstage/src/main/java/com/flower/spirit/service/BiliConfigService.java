@@ -66,6 +66,9 @@ public class BiliConfigService {
 		}else {
 			Global.bilicollectdmm= false;
 		}
+		if(null != entity.getCdnsort() && "1".equals(entity.getCdnsort())) {
+			Global.cdnsort =true;
+		}
 		return new AjaxEntity(Global.ajax_success, "操作成功", entity);
 	}
 

@@ -73,6 +73,9 @@ public class AppConfig {
 		if(null != bili.getRefreshtoken() && !"".equals(bili.getRefreshtoken())) {
 			Global.bili_refresh_token= bili.getRefreshtoken();
 		}
+		if(null != bili.getCdnsort() && "1".equals(bili.getCdnsort())) {
+			Global.cdnsort =true;
+		}
 		TikTokConfigEntity tiktok = tikTokConfigService.getData();
 		if(null !=tiktok.getCookies() && !"".equals(tiktok.getCookies())) {
 			Global.tiktokCookie =tiktok.getCookies();

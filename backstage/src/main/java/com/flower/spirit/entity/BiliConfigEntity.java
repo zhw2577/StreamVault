@@ -34,6 +34,8 @@ public class BiliConfigEntity implements Serializable {
 	private String oddmm;
 	
 	private String collectdmm;
+	
+	private String cdnsort;  //是否启用cdn 排序
 
 	public Integer getId() {
 		return id;
@@ -89,6 +91,14 @@ public class BiliConfigEntity implements Serializable {
 
 	public void setCollectdmm(String collectdmm) {
 		this.collectdmm = collectdmm;
+	}
+
+	public String getCdnsort() {
+		return cdnsort;
+	}
+
+	public void setCdnsort(String cdnsort) {
+		this.cdnsort = cdnsort;
 	}
 	
 	

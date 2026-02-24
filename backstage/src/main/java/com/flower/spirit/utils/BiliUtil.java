@@ -95,7 +95,7 @@ public class BiliUtil {
 			return processing;
 		}
 //		String video = parseObject.getJSONObject("data").getJSONArray("durl").getJSONObject(0).getString("url");
-		List<String> choiceMediaAddr = choiceMediaAddr(parseObject.getJSONObject("data").getJSONArray("durl"), 0, false, true);
+		List<String> choiceMediaAddr = choiceMediaAddr(parseObject.getJSONObject("data").getJSONArray("durl"), 0, false, Global.cdnsort);
 		if (Global.downtype.equals("http")) {
 			HttpUtil.downBiliFromUrl(choiceMediaAddr, filename + ".mp4",
 					FileUtil.generateDir(true, Global.platform.bilibili.name(), false, filename, namepath, null));
@@ -263,8 +263,8 @@ public class BiliUtil {
 		JSONObject dashData = videoData.getJSONObject("data").getJSONObject("dash");
 //		String videoUrl = dashData.getJSONArray("video").getJSONObject(0).getString("base_url");
 //		String audioUrl = dashData.getJSONArray("audio").getJSONObject(0).getString("base_url");
-		List<String> videoList = choiceMediaAddr(dashData.getJSONArray("video"), 0, true, true); 
-		List<String> audioUrl = choiceMediaAddr(dashData.getJSONArray("audio"), 0, true, true); 
+		List<String> videoList = choiceMediaAddr(dashData.getJSONArray("video"), 0, true, Global.cdnsort); 
+		List<String> audioUrl = choiceMediaAddr(dashData.getJSONArray("audio"), 0, true, Global.cdnsort); 
 		// 根据下载类型处理
 		if (Global.downtype.equals("http")) {
 			processHttpDownload(videoList, audioUrl, filename, fav);
